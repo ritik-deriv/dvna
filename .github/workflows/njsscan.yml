@@ -4,15 +4,23 @@ on:
   pull_request:
   
 jobs:
-  njsscan:
+
+  temp_job_1:
     runs-on: ubuntu-latest
-    name: njsscan check
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
-      
-    - name: nodejsscan scan
-      id: njsscan
-      uses: ajinabraham/njsscan-action@74e5a58c1edb363b84c9ddd626b0e22f038ac09e
-      with:
-        args: '. --config .njsscan.conf.yml --exit-warning'
+      - name: Temp Step 1
+        run: echo Temp 1
+
+  nodejs_scanner:
+    uses: ritik-deriv/njsscan-reusable-workflow/.github/workflows/nodejs-scanner.yml@main
+    secrets:
+      TRIVY_SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+    permissions:
+      contents: read
+      actions: read
+
+  temp_job_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Temp Step 2
+        run: echo Temp 2
