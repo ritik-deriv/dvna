@@ -9,9 +9,10 @@ jobs:
     name: njsscan check
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v2
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      
     - name: nodejsscan scan
       id: njsscan
-      uses: ajinabraham/njsscan-action@master
+      uses: ajinabraham/njsscan-action@74e5a58c1edb363b84c9ddd626b0e22f038ac09e
       with:
         args: '.'
