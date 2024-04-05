@@ -3,7 +3,8 @@ run-name: Security checks
 on:
   workflow_dispatch:
   push:
-    branches: $default-branch
+    # branches: $default-branch
+    branches: [ $default-branch ]
       # - $default-branch
   pull_request:
 concurrency:
