@@ -1,0 +1,17 @@
+name: Security checks
+run-name: Security checks
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - $default-branch
+  pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  default-branch:
+    runs-on: "ubuntu-latest"
+    steps:
+      - run: echo "Running on $default-branch"
